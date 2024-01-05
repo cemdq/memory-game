@@ -25,18 +25,6 @@ body {
   grid-gap: 8px;
 }
 
-.flex {
-  display: flex;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.align-center {
-  align-items: center;
-}
-
 .container {
   max-width: 536px;
   margin: 0 auto;
@@ -118,20 +106,6 @@ p {
   padding: 2rem;
   border-radius: .5rem;
   background: var(--bg-dark);
-}
-
-button {
-  all: unset;
-  color: white;
-  border: 1px solid var(--button-blue);
-  background-color: var(--button-blue);
-  padding: .5rem 1rem;
-  border-radius: .375rem;
-}
-
-button:hover {
-  opacity: .75;
-  cursor: pointer;
 }
 
 .scale-in-center {
