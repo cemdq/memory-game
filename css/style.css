@@ -21,8 +21,8 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 128px);
-  grid-gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: .5rem;
 }
 
 .container {
@@ -55,8 +55,8 @@ p {
 .card,
 .back,
 .front {
-  height: 128px;
-  width: 128px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .card:hover {
@@ -101,7 +101,7 @@ p {
 
 .modal-content {
   max-width: 536px;
-  margin: 100px auto;
+  margin: 100px 1rem;
   border: 1px solid var(--secundary-header);
   padding: 2rem;
   border-radius: .5rem;
