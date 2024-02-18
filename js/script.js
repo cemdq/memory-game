@@ -1,4 +1,4 @@
-const cardsArray = [{
+const cards = [{
   'name': 'square',
   'img': 'assets/cards/blue.svg'
 }, {
@@ -24,9 +24,7 @@ const cardsArray = [{
   'img': 'assets/cards/brown.svg'
 }];
 
-var gameGrid = cardsArray.concat(cardsArray).sort(function () {
-  return 0.5 - Math.random();
-});
+
 
 let guessesNumber = 0;
 var firstGuess = '';
@@ -40,25 +38,31 @@ var grid = document.createElement('section');
 grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
-gameGrid.forEach(function (item) {
-  var name = item.name,
-      img = item.img;
+function generateDeck() {
+  console.log('start')
+  let deck = cards.concat(cards).sort(() => 0.5 - Math.random());
 
-  var card = document.createElement('div');
-  card.classList.add('card');
-  card.dataset.name = name;
+  deck.forEach(function (item) {
+    var name = item.name,
+        img = item.img;
+  
+    var card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.name = name;
+  
+    var front = document.createElement('div');
+    front.classList.add('front');
+  
+    var back = document.createElement('div');
+    back.classList.add('back');
+    back.style.backgroundImage = 'url(' + img + ')';
+  
+    grid.appendChild(card);
+    card.appendChild(front);
+    card.appendChild(back);
+  });  
+}
 
-  var front = document.createElement('div');
-  front.classList.add('front');
-
-  var back = document.createElement('div');
-  back.classList.add('back');
-  back.style.backgroundImage = 'url(' + img + ')';
-
-  grid.appendChild(card);
-  card.appendChild(front);
-  card.appendChild(back);
-});
 
 var match = function match() {
   var selected = document.querySelectorAll('.selected');
@@ -109,8 +113,14 @@ grid.addEventListener('click', function (event) {
 
 function showModalValidation() {
   let matches = document.querySelectorAll('.match');
-  if(matches.length/2 == cardsArray.length) {
+  if(matches.length/2 == cards.length) {
     let x = document.querySelector('#modal');
     x.classList.remove('d-none');
   }
 }
+
+generateDeck();
+
+let button = document.getElementById('restart')
+
+button.addEventListener('click', () => generateDeck())
